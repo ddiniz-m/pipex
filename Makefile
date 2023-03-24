@@ -3,14 +3,15 @@
 PRT_SRC = ft_printf/ft_printf.c  ft_printf/ft_check.c ft_printf/ft_puthexa.c\
 		ft_printf/utils.c
 
-SRC_LIB = libft/ft_split.c libft/ft_substr.c libft/ft_strnstr.c\
-		libft/ft_strlen.c libft/ft_strjoin.c
+SRC_LIB = libft/ft_split.c libft/ft_split2.c libft/ft_substr.c libft/ft_strnstr.c\
+		libft/ft_strlen.c libft/ft_strjoin.c libft/ft_strtrim.c libft/ft_strchr.c\
+		libft/ft_strlcpy.c
 
-SRCS = main.c $(SRC_LIB) $(PRT_SRC)
+SRCS = main.c utils.c $(SRC_LIB) $(PRT_SRC)
 
 OBJS = $(SRCS:%.c=%.o)
 NAME = pipex
-CC = @gcc
+CC = @cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
@@ -23,7 +24,7 @@ run: $(NAME)
 		@./pipex
 
 val: $(NAME)
-		@valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all
+		@valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./pipex
 
 clean:
 		@$(RM) $(OBJS)

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 17:58:22 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/03/24 15:56:33 by ddiniz-m         ###   ########.fr       */
+/*   Updated: 2023/03/24 15:58:29 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-int	word_counter(char const *s, int c)
+int	word_counter2(char const *s, int c)
 {
 	int	words;
 
@@ -29,7 +29,7 @@ int	word_counter(char const *s, int c)
 	return (words);
 }
 
-int	word_size(char const *s, char c)
+int	word_size2(char const *s, char c)
 {
 	int	i;
 
@@ -39,20 +39,21 @@ int	word_size(char const *s, char c)
 	return (i);
 }
 
-char	*make_temp(int i, char const *s, char c)
+char	*make_temp2(int i, char const *s, char c)
 {
 	char	*temp;
 
 	temp = NULL;
-	temp = (char *)malloc((i + 1) * sizeof(char));
+	temp = (char *)malloc((i + 2) * sizeof(char));
 	i = 0;
 	while (*s && *s != c)
 		temp[i++] = *s++;
+	temp[i++] = 47;
 	temp[i] = '\0';
 	return (temp);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split2(char const *s, char c)
 {
 	int		i;
 	int		j;
@@ -60,7 +61,7 @@ char	**ft_split(char const *s, char c)
 	char	**buff;
 
 	j = 0;
-	count = word_counter(s, c);
+	count = word_counter2(s, c);
 	buff = (char **)malloc((count + 1) * sizeof(char *));
 	if (!buff)
 		return (0);
@@ -68,8 +69,8 @@ char	**ft_split(char const *s, char c)
 	{
 		while (*s && *s == c && j != count)
 			s++;
-		i = word_size(s, c);
-		buff[j++] = make_temp(i, s, c);
+		i = word_size2(s, c);
+		buff[j++] = make_temp2(i, s, c);
 		s = s + i + 1;
 	}
 	buff[j] = 0;

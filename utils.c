@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 18:51:41 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/03/24 16:05:17 by ddiniz-m         ###   ########.fr       */
+/*   Created: 2023/03/24 15:49:07 by ddiniz-m          #+#    #+#             */
+/*   Updated: 2023/03/24 17:55:03 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "pipex.h"
 
-int	ft_strlen(const char *s)
+int	put_error(char **av)
+{
+	if (access(av[1], F_OK) != 0)
+	{
+		perror(av[1]);
+		return (1);
+	}
+	return (0);
+}
+
+void	free_arr(char **arr)
 {
 	int	i;
 
 	i = 0;
-	while(s[i])
-		i++;
-	return (i);
+	while(arr[i])
+		free(arr[i++]);
+	free(arr);
 }

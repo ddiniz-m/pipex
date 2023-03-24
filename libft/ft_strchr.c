@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 18:51:41 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/03/24 16:05:17 by ddiniz-m         ###   ########.fr       */
+/*   Created: 2022/10/26 14:23:45 by ddiniz-m          #+#    #+#             */
+/*   Updated: 2023/03/24 18:44:16 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-int	ft_strlen(const char *s)
+char	*ft_strchr(const char *s, int c)
 {
 	int	i;
 
 	i = 0;
-	while(s[i])
+	while (s[i] != (char)c && s[i] != '\0')
 		i++;
-	return (i);
+	if (s[i] == (char)c)
+		return ((char *)s + i);
+	return (0);
 }
+
+/* #include<stdio.h>
+int main()
+{
+	char str[] = "tripouille";
+	printf("%s", ft_strchr(str, 't' + 256));
+} */

@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 18:51:41 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/03/24 16:05:17 by ddiniz-m         ###   ########.fr       */
+/*   Created: 2022/10/25 14:38:23 by ddiniz-m          #+#    #+#             */
+/*   Updated: 2023/03/24 18:44:07 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-int	ft_strlen(const char *s)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
-	while(s[i])
-		i++;
-	return (i);
+	if (size != 0)
+	{
+		while ((src[i] != '\0') && (i < size -1))
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
+	}
+	return (ft_strlen(src));
 }

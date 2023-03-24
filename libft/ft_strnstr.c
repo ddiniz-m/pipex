@@ -6,7 +6,7 @@
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 17:10:28 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/03/23 18:12:59 by ddiniz-m         ###   ########.fr       */
+/*   Updated: 2023/03/24 13:49:28 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t n)
 	i = 0;
 	j = 0;
 	if ((int)n < 0)
-		n = ft_strlen(str) - 1;
+		n = ft_strlen((char *)str) - 1;
 	if (*to_find == '\0')
 		return ((char *)str + i);
 	while (str[i] && i < n)

@@ -6,13 +6,13 @@
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 16:54:21 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/03/23 18:12:54 by ddiniz-m         ###   ########.fr       */
+/*   Updated: 2023/03/24 13:48:35 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char *s, int start, size_t len)
 {
 	size_t	i;
 	char	*buff;
@@ -24,7 +24,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		buff[0] = '\0';
 		return (buff);
 	}
-	if (ft_strlen(s) - start >= len)
+	if (ft_strlen(s) - (unsigned int)start >= len)
 		buff = malloc((len + 1) * sizeof(char));
 	else
 		buff = malloc((ft_strlen(s) - start + 1) * sizeof(char));
