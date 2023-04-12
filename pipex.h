@@ -6,7 +6,7 @@
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:53:16 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/03/30 16:07:27 by ddiniz-m         ###   ########.fr       */
+/*   Updated: 2023/04/04 17:56:53 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_pipex
 	char	**cmd1;
 	char	**cmd2;
 	char	**paths;
-	char	**env;
 }			t_pipex;
 
 void		free_arr(char **arr);
@@ -48,6 +47,7 @@ char		*ft_strtrim(char const *s1, char const *set);
 char		*ft_strchr(const char *s, int c);
 char		*ft_strrchr(const char *s, int c);
 size_t		ft_strlcpy(char *dest, const char *src, size_t size);
+void		ft_putstr_fd(char *s, int fd);
 //----------------------------------PRINTF-------------------------------------
 int			ft_printf(const char *str, ...);
 int			ft_puthexa(unsigned long long nbr,

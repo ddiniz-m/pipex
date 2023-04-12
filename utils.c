@@ -6,7 +6,7 @@
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 15:49:07 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/03/30 13:08:48 by ddiniz-m         ###   ########.fr       */
+/*   Updated: 2023/04/12 17:48:06 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	free_arr(char **arr)
 	int	i;
 
 	i = 0;
-	while(arr[i])
-		free(arr[i++]);
+	while (arr[i++])
+		free(arr[i]);
 	free(arr);
 }
