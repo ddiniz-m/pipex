@@ -6,11 +6,11 @@
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 17:10:28 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/03/24 13:49:28 by ddiniz-m         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:10:45 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "../mandatory/pipex.h"
 
 char	*ft_strnstr(const char *str, const char *to_find, size_t n)
 {

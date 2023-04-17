@@ -6,11 +6,11 @@
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:22:49 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/03/30 13:12:39 by ddiniz-m         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:10:47 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "../mandatory/pipex.h"
 
 char	*ft_strrchr(const char *s, int c)
 {

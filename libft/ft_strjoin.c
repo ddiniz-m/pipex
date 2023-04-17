@@ -6,11 +6,11 @@
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 11:28:58 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/03/23 19:34:45 by ddiniz-m         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:11:08 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "../mandatory/pipex.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

@@ -6,11 +6,11 @@
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 14:38:23 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/03/24 18:44:07 by ddiniz-m         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:10:41 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "../mandatory/pipex.h"
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {

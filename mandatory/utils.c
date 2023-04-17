@@ -5,47 +5,39 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/12 14:41:40 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/04/17 18:11:30 by ddiniz-m         ###   ########.fr       */
+/*   Created: 2023/03/24 15:49:07 by ddiniz-m          #+#    #+#             */
+/*   Updated: 2023/04/17 17:53:45 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../mandatory/pipex.h"
+#include "pipex.h"
 
-int	ft_putnbr(int nb)
+char *get_cmd(t_pipex *pipex, char *cmd)
 {
-	int	i;
+	int		i;
+	char	*buf;
 
 	i = 0;
-	if (nb < 0)
+	while ((pipex->paths)[i])
 	{
-		if (nb == -2147483648)
-			return (write(1, "-2147483648", 11));
-		i += ft_putchar('-');
-		i += ft_putnbr(-nb);
+		buf = ft_strjoin(pipex->paths[i], cmd);
+		if (!access(buf, F_OK))
+			return (buf);
+		free(buf);
+		i++;
 	}
-	else
-	{
-		if (nb > 9)
-			i += ft_putnbr(nb / 10);
-		i += ft_putchar((nb % 10) + 48);
-	}
-	return (i);
+	return (NULL);
 }
 
-int	ft_putchar(char c)
+void	var_init(t_pipex *pipex, char **av, char **env)
 {
-	return (write(1, &c, 1));
-}
+	char	*env_path;
 
-int	ft_putstr(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (str == NULL)
-		str = "(null)";
-	while (*str != '\0')
-		i += write(1, str++, 1);
-	return (i);
+	while (ft_strnstr(*++env, "PATH=", 5) == NULL)
+		;
+	env_path = ft_strtrim(*env, "PATH=");
+	pipex->cmd1 = ft_split(av[2], ' ');
+	pipex->cmd2 = ft_split(av[3], ' ');
+	pipex->paths = ft_split2(env_path, ':');
+	free(env_path);
 }

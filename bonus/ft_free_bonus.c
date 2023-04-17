@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_free_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 18:51:41 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/04/17 18:10:43 by ddiniz-m         ###   ########.fr       */
+/*   Created: 2023/04/17 17:49:39 by ddiniz-m          #+#    #+#             */
+/*   Updated: 2023/04/17 17:54:45 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../mandatory/pipex.h"
+#include "pipex_bonus.h"
 
-int	ft_strlen(const char *s)
+void	close_all(t_pipex *pipex, int *fd)
+{
+	if (fd[1] != -1)
+		close(fd[1]);
+	if (fd[0] != -1)
+		close(fd[0]);
+	if (pipex->fd_infile != -1)
+		close(pipex->fd_infile);
+	if (pipex->fd_outfile != -1)
+		close(pipex->fd_outfile);
+}
+
+void	free_arr(char **arr)
 {
 	int	i;
 
 	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	while (arr[i++])
+		free(arr[i]);
+	free(arr);
 }

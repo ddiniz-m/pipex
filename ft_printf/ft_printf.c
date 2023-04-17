@@ -6,11 +6,11 @@
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:47:19 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/03/23 13:54:25 by ddiniz-m         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:11:27 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "../mandatory/pipex.h"
 
 int	ft_printf(const char *str, ...)
 {

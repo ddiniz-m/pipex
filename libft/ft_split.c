@@ -6,11 +6,11 @@
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 17:58:22 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/03/24 15:56:33 by ddiniz-m         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:10:35 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "../mandatory/pipex.h"
 
 int	word_counter(char const *s, int c)
 {

@@ -6,11 +6,11 @@
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 12:38:33 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/03/24 18:43:03 by ddiniz-m         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:10:48 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "../mandatory/pipex.h"
 
 char	*ft_strtrim(char const *s1, char const *set)
 {

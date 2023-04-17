@@ -6,11 +6,11 @@
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 13:39:47 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/03/23 13:54:29 by ddiniz-m         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:11:29 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "../mandatory/pipex.h"
 
 int	conv(unsigned long long nbr, unsigned long long base, char *base_str)
 {
