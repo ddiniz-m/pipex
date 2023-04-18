@@ -6,7 +6,7 @@
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:51:30 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/04/17 18:30:59 by ddiniz-m         ###   ########.fr       */
+/*   Updated: 2023/04/18 17:52:24 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 //----------------------------------PIPEX--------------------------------------
 typedef struct s_pipex
 {
-	char	**paths;
 	int		fd_infile;
 	int		fd_outfile;
 }			t_pipex;
@@ -35,19 +34,17 @@ typedef struct s_pipex
 void		free_arr(char **arr);
 int			put_error(char **av);
 void		close_all(t_pipex *pipex, int *fd);
-char		 *get_cmd(t_pipex *pipex, char *cmd);
-void		path_init(t_pipex *pipex, char **env);
+char		*get_cmd(char *cmd, char **paths);
+char		**path_init(char **env);
 
 //----------------------------------LIBFT--------------------------------------
 char		**ft_split(char const *s, char c);
 char		**ft_split2(char const *s, char c);
-char		*ft_substr(char *s, int start, size_t len);
 char		*ft_strnstr(const char *str, const char *to_find, size_t n);
 int			ft_strlen(const char *s);
 char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_strtrim(char const *s1, char const *set);
 char		*ft_strchr(const char *s, int c);
-char		*ft_strrchr(const char *s, int c);
 size_t		ft_strlcpy(char *dest, const char *src, size_t size);
 void		ft_putstr_fd(char *s, int fd);
 //----------------------------------PRINTF-------------------------------------
