@@ -6,13 +6,13 @@
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:49:48 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/04/18 18:04:21 by ddiniz-m         ###   ########.fr       */
+/*   Updated: 2023/04/19 17:40:40 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	child(t_pipex *pipex, char **env, char **av)
+void	child(t_pipex *pipex, char **envp, char **av)
 {
 	char	*str;
 	char	**cmd;
@@ -21,40 +21,41 @@ void	child(t_pipex *pipex, char **env, char **av)
 	dup2(pipex->fd_infile, STDIN_FILENO);
 	dup2(pipex->pipefd[1], STDOUT_FILENO);
 	close_all(pipex);
-	paths = path_init(env);
+	paths = path_init(envp);
 	cmd = ft_split(av[2], ' ');
 	str = get_cmd(cmd[0], paths);
-	if (execve(str, cmd, env) == -1)
+	free_arr(paths);
+	if (!str || execve(str, cmd, envp) == -1)
 		perror("cmd1");
 	free(str);
 	free_arr(cmd);
-	free_arr(paths);
 	close_all(pipex);
 	exit(1);
 }
 
-void	parent(t_pipex *pipex, char **env, char **av)
+void	parent(t_pipex *pipex, char **envp, char **av)
 {
 	char	*str;
 	char	**cmd;
-	int		status;
 	char	**paths;
 
-	waitpid(-1, &status, 0);
+	wait(NULL);
 	dup2(pipex->pipefd[0], STDIN_FILENO);
 	dup2(pipex->fd_outfile, STDOUT_FILENO);
 	close_all(pipex);
-	paths = path_init(env);
+	paths = path_init(envp);
 	cmd = ft_split(av[3], ' ');
 	str = get_cmd(cmd[0], paths);
 	free_arr(paths);
-	if (execve(str, cmd, env) == -1)
+	if (!str || execve(str, cmd, envp) == -1)
 		perror("cmd2");
 	free(str);
 	free_arr(cmd);
+	close_all(pipex);
+	exit (1);
 }
 
-void	pipe_x(t_pipex *pipex, char **env, char **av)
+void	pipe_x(t_pipex *pipex, char **envp, char **av)
 {
 	pid_t	pid;
 
@@ -70,13 +71,13 @@ void	pipe_x(t_pipex *pipex, char **env, char **av)
 		exit(1);
 	}
 	if (pid == 0)
-		child(pipex, env, av);
+		child(pipex, envp, av);
 	else
-		parent(pipex, env, av);
+		parent(pipex, envp, av);
 	return ;
 }
 
-int	main(int ac, char **av, char **env)
+int	main(int ac, char **av, char **envp)
 {
 	t_pipex	pipex;
 
@@ -94,6 +95,6 @@ int	main(int ac, char **av, char **env)
 	pipex.fd_outfile = open(av[4], O_CREAT | O_RDWR | O_TRUNC, 0644);
 	if (pipex.fd_outfile < 0)
 		return (1);
-	pipe_x(&pipex, env, av);
+	pipe_x(&pipex, envp, av);
 	return (0);
 }

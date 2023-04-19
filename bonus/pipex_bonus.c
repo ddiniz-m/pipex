@@ -6,7 +6,7 @@
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 14:03:09 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/04/18 18:12:17 by ddiniz-m         ###   ########.fr       */
+/*   Updated: 2023/04/19 17:43:13 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	infile(t_pipex *pipex, char **av)
 	return (0);
 }
 
-int	child_process(char **av, int *fd, int arg, char **env)
+int	child_process(char **av, int *fd, int arg, char **envp)
 {
 	char	*str;
 	char	**paths;
@@ -34,19 +34,18 @@ int	child_process(char **av, int *fd, int arg, char **env)
 	close(fd[0]);
 	dup2(fd[1], STDOUT_FILENO);
 	close(fd[1]);
-	paths = path_init(env);
+	paths = path_init(envp);
 	buff = ft_split(av[arg], ' ');
 	str = get_cmd(buff[0], paths);
-	while(1);
-	if (execve(str, buff, env) == -1)
+	free_arr(paths);
+	if (!str || execve(str, buff, envp) == -1)
 		perror(buff[0]);
 	free(str);
 	free_arr(buff);
-	free_arr(paths);
 	exit (0);
 }
 
-void	pipe_fork(int *fd, char **av, int arg, char **env)
+void	pipe_fork(int *fd, char **av, int arg, char **envp)
 {
 	pid_t child;
 
@@ -62,7 +61,7 @@ void	pipe_fork(int *fd, char **av, int arg, char **env)
 		exit (1);
 	}
 	if (child == 0)
-		child_process(av, fd, arg, env);
+		child_process(av, fd, arg, envp);
 	else
 	{
 		close(fd[1]);
@@ -72,7 +71,7 @@ void	pipe_fork(int *fd, char **av, int arg, char **env)
 	}
 }
 
-int	outfile(t_pipex *pipex, char **av, int ac, char **env)
+int	outfile(t_pipex *pipex, char **av, int ac, char **envp)
 {
 	char	*str;
 	char	**buff;
@@ -86,18 +85,18 @@ int	outfile(t_pipex *pipex, char **av, int ac, char **env)
 	}
 	dup2(pipex->fd_outfile, STDOUT_FILENO);
 	close(pipex->fd_outfile);
-	paths = path_init(env);
+	paths = path_init(envp);
 	buff = ft_split(av[ac - 2], ' ');
 	str = get_cmd(buff[0], paths);
-	if (execve(str, buff, env) == -1)
+	free_arr(paths);
+	if (!str || execve(str, buff, envp) == -1)
 		perror(buff[0]);
 	free(str);
 	free_arr(buff);
-	free_arr(paths);
 	return (0);
 }
 
-int	main(int ac, char **av, char **env)
+int	main(int ac, char **av, char **envp)
 {
 	int	arg;
 	int fd[2];
@@ -106,15 +105,11 @@ int	main(int ac, char **av, char **env)
 	if (ac < 5)
 		return (printf("Not enough arguments"));
 	if(infile(&pipex, av) != 0)
-	{
-		perror("Infile");
 		return (1);
-	}
 	arg = 2;
 	while(arg != ac - 2)
-		pipe_fork(fd, av, arg++, env);
-	if(outfile(&pipex, av, ac, env) != 0)
+		pipe_fork(fd, av, arg++, envp);
+	if(outfile(&pipex, av, ac, envp) != 0)
 		return (1);
-	/* close_all(&pipex, fd); */
 	return (0);
 }

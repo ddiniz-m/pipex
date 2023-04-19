@@ -6,7 +6,7 @@
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:51:30 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/04/18 17:52:24 by ddiniz-m         ###   ########.fr       */
+/*   Updated: 2023/04/19 16:17:26 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,8 @@ typedef struct s_pipex
 }			t_pipex;
 
 void		free_arr(char **arr);
-int			put_error(char **av);
-void		close_all(t_pipex *pipex, int *fd);
 char		*get_cmd(char *cmd, char **paths);
-char		**path_init(char **env);
+char		**path_init(char **envp);
 
 //----------------------------------LIBFT--------------------------------------
 char		**ft_split(char const *s, char c);

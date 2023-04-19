@@ -6,7 +6,7 @@
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:31:35 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/04/18 17:58:39 by ddiniz-m         ###   ########.fr       */
+/*   Updated: 2023/04/19 16:17:18 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ void	free_arr(char **arr)
 	free(arr);
 }
 
-char	**path_init(char **env)
+char	**path_init(char **envp)
 {
 	char **paths;
 	char	*env_path;
 
-	while (ft_strnstr(*++env, "PATH=", 5) == NULL)
+	while (ft_strnstr(*++envp, "PATH=", 5) == NULL)
 		;
-	env_path = ft_strtrim(*env, "PATH=");
+	env_path = ft_strtrim(*envp, "PATH=");
 	paths = ft_split2(env_path, ':');
 	free(env_path);
 	return (paths);

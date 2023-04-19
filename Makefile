@@ -15,9 +15,6 @@ SRCS = $(addprefix mandatory/, $(SRC_PPX)) $(addprefix libft/, $(SRC_LIB))\
 SRCS_B = $(addprefix bonus/, $(SRC_BNS)) $(addprefix libft/, $(SRC_LIB))\
 		$(addprefix ft_printf/, $(SRC_PRT))
 
-COLOUR=\033[0;32m
-COLOUR_END=\033[0m
-
 OBJS = $(SRCS:%.c=%.o)
 OBJS_B = $(SRCS_B:%.c=%.o)
 NAME = pipex
@@ -36,7 +33,7 @@ bonus: $(OBJS_B)
 		@echo "\033[0;32mCompiled!\033[0m"
 
 val: bonus
-		valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all --track-fds=yes --trace-children=yes ./pipex aa "sort" "uniq" "ls -l" "cat -e" bb
+		valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all --track-fds=yes --trace-children=yes ./pipex aa "dasdasd" "uniq" "sort" bb
 
 clean:
 		@$(RM) $(OBJS) $(OBJS_B)
