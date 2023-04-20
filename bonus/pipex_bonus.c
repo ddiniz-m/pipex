@@ -6,7 +6,7 @@
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 14:03:09 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/04/19 17:43:13 by ddiniz-m         ###   ########.fr       */
+/*   Updated: 2023/04/20 14:32:04 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	infile(t_pipex *pipex, char **av)
 	pipex->fd_infile = open(av[1], O_RDONLY);
 	if (pipex->fd_infile < 0)
 	{
-		perror("Infile");
+		perror(av[1]);
 		return (1);
 	}
 	dup2(pipex->fd_infile, STDIN_FILENO);

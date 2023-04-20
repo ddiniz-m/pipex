@@ -6,7 +6,7 @@
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:49:48 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/04/19 17:40:40 by ddiniz-m         ###   ########.fr       */
+/*   Updated: 2023/04/20 16:05:31 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void	pipe_x(t_pipex *pipex, char **envp, char **av)
 		child(pipex, envp, av);
 	else
 		parent(pipex, envp, av);
-	return ;
 }
 
 int	main(int ac, char **av, char **envp)
@@ -89,7 +88,7 @@ int	main(int ac, char **av, char **envp)
 	pipex.fd_infile = open(av[1], O_RDONLY);
 	if (pipex.fd_infile < 0)
 	{
-		perror("Infile");
+		perror(av[1]);
 		return(1);
 	}
 	pipex.fd_outfile = open(av[4], O_CREAT | O_RDWR | O_TRUNC, 0644);
