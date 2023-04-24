@@ -5,7 +5,7 @@ SRC_LIB = ft_split.c ft_split2.c ft_strnstr.c ft_strlen.c\
 
 SRC_PRT = ft_printf.c  ft_check.c ft_puthexa.c utils.c
 
-SRC_PPX = pipex.c utils.c ft_free.c
+SRC_PPX = pipex.c utils.c
 
 SRC_BNS = pipex_bonus.c utils_bonus.c
 
@@ -31,9 +31,6 @@ $(NAME): $(OBJS)
 bonus: $(OBJS_B)
 		@$(CC) $(CFLAGS) $(OBJS_B) -o $(NAME)
 		@echo "\033[0;32mCompiled!\033[0m"
-
-val: bonus
-		valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all --track-fds=yes --trace-children=yes ./pipex aa "dasdasd" "uniq" "sort" bb
 
 clean:
 		@$(RM) $(OBJS) $(OBJS_B)

@@ -6,7 +6,7 @@
 /*   By: ddiniz-m <ddiniz-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:31:35 by ddiniz-m          #+#    #+#             */
-/*   Updated: 2023/04/19 16:17:18 by ddiniz-m         ###   ########.fr       */
+/*   Updated: 2023/04/21 15:14:24 by ddiniz-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	free_arr(char **arr)
 
 char	**path_init(char **envp)
 {
-	char **paths;
+	char	**paths;
 	char	*env_path;
 
 	while (ft_strnstr(*++envp, "PATH=", 5) == NULL)
@@ -37,8 +37,8 @@ char	**path_init(char **envp)
 
 char	*get_cmd(char *cmd, char **paths)
 {
-	int	i;
-	char *buf;
+	int		i;
+	char	*buf;
 
 	i = 0;
 	while ((paths)[i])
